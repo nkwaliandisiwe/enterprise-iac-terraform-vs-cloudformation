@@ -1,1 +1,70 @@
+# Terraform State Management
 
+## What Is Terraform State?
+
+Terraform state is Terraform's source of truth.
+
+It tracks infrastructure resources deployed in AWS.
+
+Without state Terraform cannot determine:
+
+- What exists
+- What changed
+- What should be updated
+
+---
+
+## Why Is State Important?
+
+Terraform uses the state file to compare:
+
+Desired Infrastructure
+vs
+Actual Infrastructure
+
+This process allows Terraform to create execution plans and safely manage resources.
+
+---
+
+## Enterprise Best Practice
+
+Do not store Terraform state locally.
+
+Use:
+
+- S3 Backend
+
+Benefits:
+
+- Centralized state storage
+- Team collaboration
+- Durability
+- Governance
+
+---
+
+## State Locking
+
+Use:
+
+- DynamoDB
+
+Purpose:
+
+Prevent multiple engineers from modifying state simultaneously.
+
+Benefits:
+
+- Prevents corruption
+- Maintains consistency
+- Supports team-based deployments
+
+---
+
+## Additional Controls
+
+Enable:
+
+- S3 Versioning
+- Encryption
+- IAM Least Privilege
